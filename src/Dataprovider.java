@@ -27,13 +27,13 @@ public class Dataprovider {
 	@Test(dataProvider="getData")
 	public void createUser(String user,String pwd){
 		Reporter.log(user+":"+pwd, true);
-		System.setProperty("webdriver.chrome.driver", ".\\Softwares\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://www.facebook.com/");
-		driver.findElement(By.id("email")).sendKeys(user);
-		driver.findElement(By.id("pass")).sendKeys(pwd);
-		driver.findElement(By.id("loginbutton")).click();
-		driver.close();
+	//	System.setProperty("webdriver.chrome.driver", ".\\Softwares\\chromedriver.exe");
+		//WebDriver driver = new ChromeDriver();
+		//driver.manage().window().maximize();
+//		driver.get("https://www.facebook.com/");
+		//driver.findElement(By.id("email")).sendKeys(user);
+//		driver.findElement(By.id("pass")).sendKeys(pwd);
+//		driver.findElement(By.id("loginbutton")).click();
+//		driver.close();
 	}
 }

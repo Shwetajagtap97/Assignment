@@ -3,11 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Assignment.FBLoginXL">
+      <class name="Test.TestOpenMRS">
         <methods>
-          <include name="Login" invocation-numbers="0 4"/>
+          <include name="webTableHandles"/>
+          <include name="BeforeMethod"/>
         </methods>
-      </class> <!-- Assignment.FBLoginXL -->
+      </class> <!-- Test.TestOpenMRS -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

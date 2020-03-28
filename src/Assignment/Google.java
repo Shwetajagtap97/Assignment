@@ -1,5 +1,7 @@
 package Assignment;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,22 +15,18 @@ public class Google {
 		WebDriver driver= new ChromeDriver();
 		System.out.println("Launching Browser");
 		driver.manage().window().maximize();
-		Thread.sleep(10000);
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.get("https://www.google.com/");
 		System.out.println("Launching Google");
 		driver.findElement(By.name("q")).sendKeys("java");
-		Thread.sleep(100000);
-		WebElement list=driver.findElement(By.xpath("//li[position()=3]"));
+		//read.sleep(100000);
+		WebElement list=driver.findElement(By.xpath("//li[3]"));
 		Actions a=new Actions(driver);
 		a.moveToElement(list).perform();
 		System.out.println("Serach for:"+list.getText());
-		Thread.sleep(10000);
+		//read.sleep(10000);
 		list.click();
-		
-		
-		
-		
-
+		driver.close();
 	}
 
 }

@@ -22,11 +22,15 @@ import org.testng.asserts.SoftAssert;
 	lis.add(22);
 	lis.add("Ketan");
 	lis.add(true);	
+	Assert.fail();
 	Assert.assertEquals(li, lis);
 	//SoftAssert sa= new SoftAssert();
 	//sa.assertEquals(li, lis);
 	Reporter.log("Hello", true);
 	//sa.assertAll();
+	
 	}
 
+	
+	
 }

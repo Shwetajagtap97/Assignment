@@ -19,16 +19,31 @@ public class YatraPOM {
 	
 	@FindBy(name="flight_origin_date")
 	private WebElement calender;
-	@FindBy(xpath="//td[@class='depart-daybox']")
+	@FindBy(xpath="//td[@id='20/01/2020']")
 	private WebElement date;
 	
 	@FindBy(name="flight_destination_date")
 	private WebElement rcalender;
-	
-	@FindBy(id="21/01/2020")
+	@FindBy(id="27/01/2020")
 	private WebElement rdate;
+	
 	@FindBy(xpath="//span[@class='txt-ellipses flight_passengerBox travellerPaxBox']")
 	private WebElement travellers;
+	@FindBy(xpath="//span[@id='adultPax']/parent::span/following::span[2]")
+	private WebElement adult;
+	@FindBy(xpath="//span[@id='childPax']/parent::span/following::span[2]")
+	private WebElement child;
+	@FindBy(xpath="//span[@id='infantPax']/parent::span/following::span[2]")
+	private WebElement infant;
+	@FindBy(xpath="//span[text()='Premium Economy']/parent::li")
+	private WebElement premium;
+	@FindBy(xpath="//span[text()='Business']/parent::li")
+	private WebElement business;
+	@FindBy(xpath="//span[text()='Economy']/parent::li")
+	private WebElement economy;
+	
+	@FindBy(id="BE_flight_flsearch_btn")
+	private WebElement searchf;
 	
 	public YatraPOM(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -67,5 +82,36 @@ public class YatraPOM {
 	{
 		rdate.click();
 	}
-	
+	public void traveller()
+	{
+		travellers.click();	
+	}
+	public void addAdult()
+	{
+		adult.click();
+	}
+	public void addChild()
+	{
+		child.click();
+	}
+	public void addInfant()
+	{
+		infant.click();
+	}
+	public void selBusiness()
+	{
+		business.click();
+	}
+	public void selEconomy()
+	{
+		economy.click();
+	}
+	public void selPEconomy()
+	{
+		premium.click();
+	}
+	public void searchFlights()
+	{
+		searchf.click();
+	}
 }

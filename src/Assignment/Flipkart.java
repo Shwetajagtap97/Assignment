@@ -19,23 +19,32 @@ public class Flipkart {
 		WebDriver driver = new ChromeDriver();
 		System.out.println("Lauching browser");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		WebDriverWait ww=new WebDriverWait(driver,20);
 		driver.get("https://www.flipkart.com/");
 		System.out.println("Launching Flipkart");
 		driver.findElement(By.xpath("//button[@class='_2AkmmA _29YdH8']")).click();
 		WebElement txt=driver.findElement(By.xpath("//input[@class='LM6RPg']"));
 		txt.sendKeys("iphone");
-		List<WebElement> sugetion=driver.findElements(By.xpath("//ul[@class='col-12-12 _1PBbw8']/descendant::a"));
+		Actions a=new Actions(driver);
+		List<WebElement> sugetion=driver.findElements(By.xpath("//a[@class='_2ja22P']/div[2]"));
 		for(WebElement sug:sugetion)
-		{	System.out.println(sug);
+		{
 			System.out.println(sug.getText());
+			
+		}
+		List<WebElement> suget=driver.findElements(By.xpath("//ul[@class='col-12-12 _1PBbw8']/li/div/a"));
+		for(WebElement su:suget)
+		{
+			a.moveToElement(su);
+			
 		}
 		System.out.println(sugetion.size());
-		Actions a=new Actions(driver);
-		a.dragAndDropBy(txt, 1, 0).perform();
-		//ww.until(ExpectedConditions.titleContains(""));
-		//driver.findElement(By.xpath(""));
+		Thread.sleep(10000);
+		System.out.println();
+		driver.findElement(By.xpath("//ul[@class='col-12-12 _1PBbw8']/li[1]/div")).click();
+		ww.until(ExpectedConditions.titleContains("Iphone"));
+		driver.findElement(By.xpath("//div[@data-id='MOBEMK62PN2HU7EE']/descendant::img[@class='_1Nyybr  _30XEf0']")).click();;
 		
 		
 	}
