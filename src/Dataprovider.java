@@ -3,10 +3,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class Dataprovider {
+	WebDriver driver=null;
 	@DataProvider
 	public String[][] getData()
 	{
@@ -24,16 +26,21 @@ public class Dataprovider {
 		str[3][1]="012";
 		return str;
 	}
+	@BeforeTest
+	public void BeforeTest()
+	{
+		System.setProperty("webdriver.chrome.driver", ".\\Softwares\\chromedriver.exe");
+		 driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/");
+	}
 	@Test(dataProvider="getData")
 	public void createUser(String user,String pwd){
 		Reporter.log(user+":"+pwd, true);
-	//	System.setProperty("webdriver.chrome.driver", ".\\Softwares\\chromedriver.exe");
-		//WebDriver driver = new ChromeDriver();
-		//driver.manage().window().maximize();
-//		driver.get("https://www.facebook.com/");
-		//driver.findElement(By.id("email")).sendKeys(user);
-//		driver.findElement(By.id("pass")).sendKeys(pwd);
-//		driver.findElement(By.id("loginbutton")).click();
-//		driver.close();
+		
+		driver.findElement(By.id("email")).sendKeys(user);
+		driver.findElement(By.id("pass")).sendKeys(pwd);
+		driver.findElement(By.id("loginbutton")).click();
+		driver.close();
 	}
 }
